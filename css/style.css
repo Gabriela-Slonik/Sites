@@ -113,6 +113,33 @@ button:hover {
   background: #78584c;
 }
 
+#tree {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.node {
+  display: inline-block;
+  text-align: center;
+  margin: 15px;
+}
+
+.children {
+  display: flex;
+  justify-content: space-between;
+}
+
+.red {
+  color: crimson;
+  font-weight: bold;
+}
+
+.black {
+  color: black;
+  font-weight: bold;
+}
+
 footer {
   margin: 40px 0;
 }
