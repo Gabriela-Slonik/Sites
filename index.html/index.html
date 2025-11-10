@@ -24,7 +24,69 @@
   </main>
 
   <footer>
-    <p>© 2025 - Site educativo de Estruturas de Dados</p>
+        
+</head>
+<body>
+
+  <h2>Resumo das estruturas</h2>
+  </footer>
+    <div class="galeria">
+    <div class="item">
+      <p>BUSCA BINÁRIA</p>
+      <textarea placeholder=" A busca binária é um algoritmo eficiente para encontrar um elemento em um vetor ordenado.
+ A ideia é dividir o intervalo de busca ao meio a cada iteração, comparando o elemento buscado com o valor central.
+ Caso o valor procurado seja menor, busca-se na metade esquerda; se for maior, na metade direita.
+ Sua complexidade é O(log n), tornando-a muito mais rápida que a busca linear para grandes conjuntos de dados."></textarea>
+    </div>
+
+    <div class="item">
+      <p>HASH ENCADEADO</p>
+      <textarea placeholder=" A técnica de Hash Encadeada (ou hashing com encadeamento separado) utiliza listas ligadas para resolver colisões em uma tabela hash. Cada posição da tabela contém uma lista onde são inseridos os elementos que geram o mesmo valor de hash. Essa abordagem é simples e eficiente quando o número de colisões é controlado, mantendo a busca próxima de O(1)."></textarea>
+    </div>
+
+    <div class="item">
+      <p>HASH DE ENDEREÇAMENTO ABERTO</p>
+      <textarea placeholder=" No endereçamento aberto, todas as chaves são armazenadas diretamente dentro da tabela.
+ Quando ocorre uma colisão, o algoritmo procura a próxima posição livre seguindo uma sequência (linear, quadrática ou duplo hashing).
+ Essa técnica evita o uso de listas encadeadas, mas pode sofrer com agrupamentos (clusters) e exige bom dimensionamento da tabela."></textarea>
+    </div>
+      
+    <div class="item">
+      <p>HASH DINÂMICO / REHASH</p>
+      <textarea placeholder=" O hashing dinâmico adapta o tamanho da tabela conforme a quantidade de elementos armazenados.
+ O ReHash é o processo de reconstruir a tabela quando ela atinge um limite de ocupação, recalculando os índices com uma nova função ou tamanho de hash.
+ Essa abordagem mantém a eficiência da busca e inserção mesmo em cenários de crescimento contínuo."></textarea>
+    </div>
+
+    <div class="item">
+      <p>ÁRVORES AVL</p>
+      <textarea placeholder=" Uma árvore AVL é uma árvore binária de busca balanceada onde a diferença de altura entre as subárvores esquerda e direita de qualquer nó é no máximo 1.
+ Esse balanceamento é mantido por rotações após inserções e remoções.
+ O resultado é uma estrutura que garante operações de busca, inserção e remoção em O(log n)."></textarea>
+    </div>
+
+    <div class="item">
+      <p>ÁRVORES RED-BLACK</p>
+      <textarea placeholder=" As árvores Red-Black são árvores binárias de busca balanceadas por regras de coloração.
+ Cada nó é vermelho ou preto, e o balanceamento é mantido por propriedades que controlam o número de nós pretos em cada caminho. São amplamente utilizadas em bibliotecas e sistemas devido à sua eficiência e simplicidade de manutenção."></textarea>
+    </div>
+
+    <div class="item">
+     <p>ÁRVORES B e B+</p>
+      <textarea placeholder=" Árvores B e B+ são estruturas de dados balanceadas amplamente usadas em bancos de dados e sistemas de arquivos.
+ Elas armazenam múltiplas chaves por nó, reduzindo a profundidade da árvore.
+ A principal diferença é que nas B+, apenas as folhas armazenam os dados, enquanto nas B os dados podem aparecer em nós internos."></textarea>
+    </div>
+
+    <div class="item">
+      <p>SKIP LIST</p>
+      <textarea placeholder=" Skip Lists são estruturas probabilísticas que permitem busca, inserção e remoção em tempo O(log n), simulando o comportamento de árvores balanceadas. Elas consistem em múltiplas listas ligadas em níveis, onde cada nível superior “pula” elementos, acelerando a navegação.
+ São mais simples de implementar que árvores AVL ou Red-Black."></textarea>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
   </footer>
 </body>
+  </body>
 </html>
