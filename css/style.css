@@ -3,19 +3,68 @@ body {
   background: #f5f8ff;
   color: #333;
   margin: 0;
-  padding: 0;
+  padding: 20px;
   text-align: center;
 }
 
-header {
-  background: #3a6ea5;
-  color: white;
-  padding: 30px 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+h1 {
+  color: #240000;
+  margin-bottom: 10px;
 }
 
-h1 {
+h2 {
+  color: #9c2525;
   margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 10px;
+  color: #0d0b0b;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.item {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  width: 110%;
+  max-width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea {
+  width: 90%;
+  margin-top: 1px;
+  border: 1px solid #9c2525;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: none;
+  height: 160px;
+  transition: border-color 0.3s;
+}
+
+textarea:focus {
+  border-color: #823c3c;
+  outline: none;
+}
+
+header {
+  background: #823c3c;
+  color: white;
+  padding: 25px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .menu {
@@ -27,7 +76,7 @@ h1 {
 }
 
 .botao {
-  background: #5fa8d3;
+  background: #5e3f35;
   color: white;
   text-decoration: none;
   padding: 15px 25px;
@@ -36,14 +85,32 @@ h1 {
 }
 
 .botao:hover {
-  background: #337ab7;
+  background: #78584c;
 }
 
 .conteudo {
-  padding: 40px;
+  padding: 30px;
   max-width: 800px;
   margin: auto;
   text-align: justify;
+}
+
+input, button {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+}
+
+button {
+  background: #59392e;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #78584c;
 }
 
 footer {
@@ -51,7 +118,7 @@ footer {
 }
 
 .voltar {
-  background: #3a6ea5;
+  background: #5e3f35;
   color: white;
   text-decoration: none;
   padding: 10px 20px;
@@ -60,5 +127,14 @@ footer {
 }
 
 .voltar:hover {
-  background: #244a72;
+  background: #78584c;
 }
+
+pre {
+  text-align: left;
+  background: #eef3ff;
+  padding: 10px;
+  border-radius: 6px;
+  overflow-x
+
+
