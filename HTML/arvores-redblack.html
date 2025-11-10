@@ -1,43 +1,159 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Árvore Red-Black</title>
-<link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Árvore Red-Black</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header><h1>Árvore Red-Black</h1></header>
+  <header>
+    <h1>Árvore Red-Black</h1>
+  </header>
 
-<main class="conteudo">
-<p>Insira números e veja a coloração alternada simulando a árvore Red-Black:</p>
-<input id="n" type="number" placeholder="Número">
-<button onclick="add()">Inserir</button>
-<div id="tree"></div>
+  <main class="conteudo">
+    <p>Insira números e veja a árvore Red-Black sendo formada (cores representam os nós):</p>
+    <input id="n" type="number" placeholder="Número">
+    <button onclick="add()">Inserir</button>
+    <div id="tree"></div>
+  </main>
 
-<script>
-let nos = [];
+  <footer>
+    <a href="index.html" class="voltar">← Voltar</a>
+  </footer>
 
-function add() {
-  const v = parseInt(document.getElementById('n').value);
-  if (isNaN(v)) return;
-  nos.push(v);
-  nos.sort((a,b)=>a-b);
-  desenhar();
-}
+  <script>
+    class Node {
+      constructor(value) {
+        this.value = value;
+        this.color = 'red';
+        this.left = null;
+        this.right = null;
+        this.parent = null;
+      }
+    }
 
-function desenhar() {
-  let html = '';
-  nos.forEach((v,i)=>{
-    let cor = i % 2 === 0 ? 'red' : 'black';
-    html += `<span style="color:${cor};margin:5px;">●${v}</span>`;
-  });
-  document.getElementById('tree').innerHTML = html;
-}
-</script>
-</main>
+    let root = null;
 
-<footer><a href="../index.html/index.html" class="voltar">← Voltar</a></footer>
+    function rotateLeft(x) {
+      const y = x.right;
+      x.right = y.left;
+      if (y.left) y.left.parent = x;
+      y.parent = x.parent;
+      if (!x.parent) root = y;
+      else if (x === x.parent.left) x.parent.left = y;
+      else x.parent.right = y;
+      y.left = x;
+      x.parent = y;
+    }
+
+    function rotateRight(x) {
+      const y = x.left;
+      x.left = y.right;
+      if (y.right) y.right.parent = x;
+      y.parent = x.parent;
+      if (!x.parent) root = y;
+      else if (x === x.parent.right) x.parent.right = y;
+      else x.parent.left = y;
+      y.right = x;
+      x.parent = y;
+    }
+
+    function fixInsert(z) {
+      while (z.parent && z.parent.color === 'red') {
+        if (z.parent === z.parent.parent.left) {
+          const y = z.parent.parent.right;
+          if (y && y.color === 'red') {
+            z.parent.color = 'black';
+            y.color = 'black';
+            z.parent.parent.color = 'red';
+            z = z.parent.parent;
+          } else {
+            if (z === z.parent.right) {
+              z = z.parent;
+              rotateLeft(z);
+            }
+            z.parent.color = 'black';
+            z.parent.parent.color = 'red';
+            rotateRight(z.parent.parent);
+          }
+        } else {
+          const y = z.parent.parent.left;
+          if (y && y.color === 'red') {
+            z.parent.color = 'black';
+            y.color = 'black';
+            z.parent.parent.color = 'red';
+            z = z.parent.parent;
+          } else {
+            if (z === z.parent.left) {
+              z = z.parent;
+              rotateRight(z);
+            }
+            z.parent.color = 'black';
+            z.parent.parent.color = 'red';
+            rotateLeft(z.parent.parent);
+          }
+        }
+      }
+      root.color = 'black';
+    }
+
+    function insert(value) {
+      const newNode = new Node(value);
+      if (!root) {
+        root = newNode;
+        root.color = 'black';
+        return;
+      }
+
+      let current = root, parent = null;
+      while (current) {
+        parent = current;
+        if (value < current.value) current = current.left;
+        else current = current.right;
+      }
+
+      newNode.parent = parent;
+      if (value < parent.value) parent.left = newNode;
+      else parent.right = newNode;
+
+      fixInsert(newNode);
+    }
+
+    function add() {
+      const v = parseInt(document.getElementById('n').value);
+      if (isNaN(v)) return;
+      insert(v);
+      document.getElementById('n').value = '';
+      desenhar();
+    }
+
+    function desenhar() {
+      const container = document.getElementById('tree');
+      container.innerHTML = '';
+      if (root) container.appendChild(criarNo(root));
+    }
+
+    function criarNo(no) {
+      if (!no) return null;
+
+      const div = document.createElement('div');
+      div.classList.add('node');
+      div.innerHTML = `<span class="${no.color}">${no.value}</span>`;
+
+      const filhos = document.createElement('div');
+      filhos.classList.add('children');
+
+      const esq = criarNo(no.left);
+      const dir = criarNo(no.right);
+
+      if (esq) filhos.appendChild(esq);
+      if (dir) filhos.appendChild(dir);
+
+      if (no.left || no.right) div.appendChild(filhos);
+      return div;
+    }
+  </script>
 </body>
 </html>
 
